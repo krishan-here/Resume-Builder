@@ -4,6 +4,7 @@ import { ListItemButton } from '@mui/material';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import './App.css';
+import Education from './components/Education';
 import PersonalInfo from './components/PersonalInfo';
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
             exit={{ opacity: 0, x: -30 }}
             className='detail-input-wrapper'>
             {selectedIndex === 0 && <PersonalInfo />}
+            {selectedIndex === 2 && <Education />}
           </motion.div>
         )}
       </AnimatePresence>

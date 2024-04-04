@@ -1,12 +1,20 @@
-function Input({ label, id, ...rest }) {
+function Input({ label, id, textarea, ...rest }) {
   return (
-    <div className='input-grp'>
+    <div className='input-control'>
       <label htmlFor={id}>{label}</label>
-      <input
-        id={id}
-        type='text'
-        {...rest}
-      />
+      {textarea && (
+        <textarea
+          id={id}
+          type='text'
+          {...rest}></textarea>
+      )}
+      {!textarea && (
+        <input
+          id={id}
+          type='text'
+          {...rest}
+        />
+      )}
     </div>
   );
 }

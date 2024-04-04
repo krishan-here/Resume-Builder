@@ -10,6 +10,10 @@ ul {
   padding: 0px;
 }
 
+textarea {
+  resize: vertical;
+}
+
 
 
 .poppins-light {
@@ -64,14 +68,27 @@ ul {
 
 .input-grp {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
 }
 
-.input-grp label {
+.input-grp .input-control {
+  width: 100%;
+}
+
+.input-control {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.input-control label {
   font-size: small;
 }
 
-.input-grp input {
+.input-control input,
+.input-control textarea {
+  /* width: 100%; */
   font-size: medium;
   padding: 10px;
   border: 1px solid #c5c2c2;
@@ -79,7 +96,46 @@ ul {
   margin-bottom: 20px;
 }
 
-.input-grp input:focus-visible {
+.input-control input:focus-visible,
+.input-control textarea:focus-visible {
   border: 2px solid #8e8c8c;
   outline: none;
+}
+
+/* education section  */
+
+.edu-section {
+  margin-top: 20px;
+}
+
+.btn-grp {
+  display: flex;
+  gap: 30px;
+}
+
+.btn-dark {
+  background: #000000;
+  color: #fff;
+}
+
+.list-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.list-item {
+  width: max-content;
+  padding: 7px 10px;
+  white-space: nowrap;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.list-item.selected {
+  background: #000000;
+  color: #fff;
 }
