@@ -1,67 +1,65 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { resumeContext } from '../context/resume';
 import Input from './UI/Input';
 
 function Education() {
-  const [items, setItems] = useState([]);
-  const [selectedItem, setSelectedItem] = useState({ index: -1, item: {} });
+  const [selectedItemIdx, setSelectedItemIdx] = useState(0);
+
+  const resumeCtx = useContext(resumeContext);
+  const currentEducation = resumeCtx.education[selectedItemIdx];
+
+  function handleInputChange(key, value) {
+    resumeCtx.updateEducation(currentEducation.id, key, value);
+  }
 
   function handleAddMoreClick(e) {
     e.preventDefault();
-    const fd = new FormData(e.target);
-    const data = Object.fromEntries(fd.entries());
     e.target.reset();
-    setSelectedItem({ index: -1, item: data });
-    setItems((items) => [...items, data]);
+    resumeCtx.addEducation();
+    setSelectedItemIdx(resumeCtx.education.length);
   }
 
   function handleItemClick(index) {
-    setSelectedItem({
-      index: index,
-      item: items[index],
-    });
+    setSelectedItemIdx(index);
   }
 
   return (
     <div className='edu-section'>
       <ul className='list-container'>
-        {items.map((item, index) => {
+        {resumeCtx.education.map((item, index) => {
           return (
             <li
+              key={item.id}
               onClick={() => handleItemClick(index)}
               className={`list-item ${
-                selectedItem.index === index ? 'selected' : ''
+                selectedItemIdx === index ? 'selected' : ''
               }`}>
               Education {index + 1}
             </li>
           );
         })}
-        <li
-          className={`list-item ${
-            selectedItem.index === -1 ? 'selected' : ''
-          }`}>
-          Education {items.length + 1}
-        </li>
       </ul>
-      <form
-        action=''
-        onSubmit={handleAddMoreClick}>
+      <form onSubmit={handleAddMoreClick}>
         <Input
           label='College/School'
           id='school'
           name='school'
-          value={selectedItem.item.school || ''}
+          onChange={(e) => handleInputChange('school', e.target.value)}
+          value={currentEducation.school}
         />
         <Input
           label='Degree/Course'
           id='course'
           name='course'
-          value={selectedItem.item.course || ''}
+          onChange={(e) => handleInputChange('course', e.target.value)}
+          value={currentEducation.course}
         />
         <Input
           label='Description'
           id='description'
           name='description'
-          value={selectedItem.item.description || ''}
+          onChange={(e) => handleInputChange('description', e.target.value)}
+          value={currentEducation.description}
           textarea
         />
         <div className='input-grp'>
@@ -69,13 +67,15 @@ function Education() {
             label='Duration(From)'
             id='duration'
             type='date'
-            value={selectedItem.item.from || ''}
+            onChange={(e) => handleInputChange('from', e.target.value)}
+            value={currentEducation.from}
             name='from'
           />
           <Input
             label='Duration(To)'
             id='duration'
-            value={selectedItem.item.to || ''}
+            onChange={(e) => handleInputChange('to', e.target.value)}
+            value={currentEducation.to}
             type='date'
             name='to'
           />
@@ -83,7 +83,8 @@ function Education() {
         <Input
           label='Grade'
           id='grade'
-          value={selectedItem.item.grade || ''}
+          onChange={(e) => handleInputChange('grade', e.target.value)}
+          value={currentEducation.grade}
           name='grade'
         />
 

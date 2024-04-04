@@ -6,6 +6,7 @@ import { useState } from 'react';
 import './App.css';
 import Education from './components/Education';
 import PersonalInfo from './components/PersonalInfo';
+import ResumeContextProvider from './context/resume';
 
 function App() {
   const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -44,21 +45,23 @@ function App() {
   );
 
   return (
-    <div className='App'>
-      <div className='sidebar'>{DrawerList}</div>
-      <AnimatePresence>
-        {selectedIndex > -1 && (
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -30 }}
-            className='detail-input-wrapper'>
-            {selectedIndex === 0 && <PersonalInfo />}
-            {selectedIndex === 2 && <Education />}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+    <ResumeContextProvider>
+      <div className='App'>
+        <div className='sidebar'>{DrawerList}</div>
+        <AnimatePresence>
+          {selectedIndex > -1 && (
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -30 }}
+              className='detail-input-wrapper'>
+              {selectedIndex === 0 && <PersonalInfo />}
+              {selectedIndex === 2 && <Education />}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </ResumeContextProvider>
   );
 }
 
