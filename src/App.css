@@ -6,6 +6,7 @@
   border-right: 2px solid #e8e8e8;
   height: 100vh;
   width: 280px;
+  z-index: 1000;
   background: #fff;
 }
 
@@ -13,13 +14,18 @@
   border-bottom: 2px solid #e8e8e8;
 }
 
-.sidebar-item div {
-  padding: 8px 0px 8px 16px;
+.sidebar-item>div {
+  padding: 8px 16px;
   font-family: "Poppins";
   font-weight: 500;
   display: flex;
   justify-content: space-between;
+}
 
+.list-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .detail-input-wrapper {
@@ -27,17 +33,5 @@
   height: 100vh;
   padding: 16px;
   border-right: 2px solid #e8e8e8;
-  position: relative;
-  z-index: -1;
-  animation: detail-input .1s ease-out forwards;
-}
-
-@keyframes detail-input {
-  from {
-    left: -400px;
-  }
-
-  to {
-    left: 0;
-  }
+  /* z-index: -1; */
 }

@@ -1,6 +1,7 @@
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { ListItemButton, ListItemIcon } from '@mui/material';
+import { ListItemButton } from '@mui/material';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 import './App.css';
 import PersonalInfo from './components/PersonalInfo';
@@ -29,9 +30,11 @@ function App() {
             <ListItemButton
               onClick={(event) => handleListItemClick(event, index)}>
               <p>{text}</p>
-              <ListItemIcon>
+              <motion.div
+                className='list-icon'
+                animate={{ rotate: selectedIndex === index ? 0 : 90 }}>
                 {selectedIndex === index ? <RemoveIcon /> : <AddIcon />}
-              </ListItemIcon>
+              </motion.div>
             </ListItemButton>
           </li>
         ))}
@@ -42,11 +45,17 @@ function App() {
   return (
     <div className='App'>
       <div className='sidebar'>{DrawerList}</div>
-      {selectedIndex > -1 && (
-        <div className='detail-input-wrapper'>
-          {selectedIndex === 0 && <PersonalInfo />}
-        </div>
-      )}
+      <AnimatePresence>
+        {selectedIndex > -1 && (
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -30 }}
+            className='detail-input-wrapper'>
+            {selectedIndex === 0 && <PersonalInfo />}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
