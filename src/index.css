@@ -161,3 +161,17 @@ textarea {
   overflow-x: unset;
   flex-wrap: wrap;
 }
+
+/* Resume wrapper  */
+
+.resume-wrapper {
+  padding: 50px 20px;
+  width: 100%;
+}
+
+.resume-preview {
+  margin: 0 auto;
+  background: #fff;
+  width: 600px;
+  height: 700px;
+}
