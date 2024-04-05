@@ -34,5 +34,5 @@
   padding: 16px 20px;
   border-right: 2px solid #e8e8e8;
   box-sizing: border-box;
-  /* z-index: -1; */
+  background: #fff;
 }

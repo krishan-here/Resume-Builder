@@ -3,6 +3,7 @@ body {
   font-family: "Poppins", sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #f8f8f8;
 }
 
 ul {
@@ -49,7 +50,8 @@ textarea {
 .image-container img {
   width: 100px;
   aspect-ratio: 1;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .btn {
@@ -57,13 +59,27 @@ textarea {
   width: 100%;
   font-size: medium;
   background: none;
-  padding: 8px 10px;
+  padding: 5px 10px;
   border-radius: 4px;
   cursor: pointer;
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; */
+}
+
+.py-2 {
+  padding: 8px 10px;
 }
 
 .btn-outline {
   outline: 1px solid #4f4f4f;
+}
+
+.btn-icon {
+  width: fit-content;
+  outline-color: rgb(241, 121, 77);
+  color: rgb(241, 121, 77);
 }
 
 .input-grp {
@@ -111,6 +127,7 @@ textarea {
 .btn-grp {
   display: flex;
   gap: 30px;
+  margin-top: 20px;
 }
 
 .btn-dark {
@@ -138,4 +155,9 @@ textarea {
 .list-item.selected {
   background: #000000;
   color: #fff;
+}
+
+.list-container.skills {
+  overflow-x: unset;
+  flex-wrap: wrap;
 }
