@@ -44,8 +44,28 @@ function Sidebar() {
       </ul>
     </div>
   );
+  let content;
+  switch (selectedIndex) {
+    case 0:
+      content = <PersonalInfo goNextSection={() => handleListItemClick(1)} />;
+      break;
+    case 1:
+      content = <Experience goNextSection={() => handleListItemClick(2)} />;
+      break;
+    case 2:
+      content = <Education goNextSection={() => handleListItemClick(3)} />;
+      break;
+    case 3:
+      content = <Project goNextSection={() => handleListItemClick(4)} />;
+      break;
+    case 4:
+      content = <Skills goNextSection={() => handleListItemClick(0)} />;
+      break;
+    default:
+      content = null;
+  }
   return (
-    <>
+    <div className='sidebar_wrapper'>
       <div className='sidebar'>{DrawerList}</div>
       <AnimatePresence>
         {selectedIndex > -1 && (
@@ -54,25 +74,11 @@ function Sidebar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -30 }}
             className='detail-input-wrapper'>
-            {selectedIndex === 0 && (
-              <PersonalInfo goNextSection={() => handleListItemClick(1)} />
-            )}
-            {selectedIndex === 1 && (
-              <Experience goNextSection={() => handleListItemClick(2)} />
-            )}
-            {selectedIndex === 2 && (
-              <Education goNextSection={() => handleListItemClick(3)} />
-            )}
-            {selectedIndex === 3 && (
-              <Project goNextSection={() => handleListItemClick(4)} />
-            )}
-            {selectedIndex === 4 && (
-              <Skills goNextSection={() => handleListItemClick(0)} />
-            )}
+            <AnimatePresence>{content}</AnimatePresence>
           </motion.div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 }
 

@@ -166,12 +166,12 @@ textarea {
 
 .resume-wrapper {
   padding: 50px 20px;
-  width: 100%;
+  flex-grow: 1;
 }
 
 .resume-preview {
   margin: 0 auto;
   background: #fff;
   width: 600px;
-  height: 700px;
+  height: 849.87px;
 }

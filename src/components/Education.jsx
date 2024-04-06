@@ -1,4 +1,5 @@
 import DeleteIcon from '@mui/icons-material/Delete';
+import { motion } from 'framer-motion';
 import { useContext, useState } from 'react';
 import { resumeContext } from '../context/resume';
 import Input from './UI/Input';
@@ -36,7 +37,11 @@ function Education({ goNextSection }) {
   }
 
   return (
-    <div className='edu-section'>
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.1 }}
+      className='edu-section'>
       <ul className='list-container'>
         {resumeCtx.education.map((item, index) => {
           return (
@@ -120,7 +125,7 @@ function Education({ goNextSection }) {
           </button>
         </div>
       </form>
-    </div>
+    </motion.div>
   );
 }
 

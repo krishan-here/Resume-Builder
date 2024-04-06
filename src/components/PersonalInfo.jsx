@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { useContext, useEffect, useRef, useState } from 'react';
 import dummyProfile from '../assets/dummy_profile.png';
 import { resumeContext } from '../context/resume';
@@ -30,7 +31,10 @@ function PersonalInfo({ goNextSection }) {
     resumeCtx.updatePersonalInfo(key, value);
   }
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.1 }}>
       <div className='image-wrapper'>
         <p>Upload your photo</p>
         <div className='image-container'>
@@ -82,7 +86,7 @@ function PersonalInfo({ goNextSection }) {
           Done
         </button>
       </form>
-    </>
+    </motion.div>
   );
 }
 

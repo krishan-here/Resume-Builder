@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { LayoutGroup } from 'framer-motion';
 import DisplayResume from './components/DisplayResume';
 import Sidebar from './components/Sidebar';
 import ResumeContextProvider from './context/resume';
@@ -6,12 +6,12 @@ import ResumeContextProvider from './context/resume';
 function App() {
   return (
     <ResumeContextProvider>
-      <motion.div
-        className='App'
-        layout>
-        <Sidebar />
-        <DisplayResume />
-      </motion.div>
+      <div className='App'>
+        <LayoutGroup>
+          <Sidebar />
+          <DisplayResume />
+        </LayoutGroup>
+      </div>
     </ResumeContextProvider>
   );
 }
