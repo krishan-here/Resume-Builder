@@ -115,7 +115,6 @@ const s = StyleSheet.create({
   skill_list: {
     flexDirection: 'row',
     gap: 10,
-    // marginBottom: 30,
     flexWrap: 'wrap',
   },
   skill_list_item: {
@@ -126,11 +125,9 @@ const s = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 10,
     paddingVertical: 3,
-    // height: 30,
     fontFamily: 'Rubik',
     alignItems: 'center',
     justifyContent: 'center',
-    // padding: '3px 10px',
   },
 });
 
