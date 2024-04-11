@@ -12,8 +12,14 @@ import Skills from './Skills';
 
 function Sidebar() {
   const [selectedIndex, setSelectedIndex] = useState(-1);
+  const [hideChildAnimation, setHideChildAnimation] = useState(false);
 
   const handleListItemClick = (index) => {
+    if (selectedIndex === -1) {
+      setHideChildAnimation(true);
+    } else {
+      setHideChildAnimation(false);
+    }
     if (index === selectedIndex) setSelectedIndex(-1);
     else setSelectedIndex(index);
   };
@@ -47,19 +53,44 @@ function Sidebar() {
   let content;
   switch (selectedIndex) {
     case 0:
-      content = <PersonalInfo goNextSection={() => handleListItemClick(1)} />;
+      content = (
+        <PersonalInfo
+          hideAnimation={hideChildAnimation}
+          goNextSection={() => handleListItemClick(1)}
+        />
+      );
       break;
     case 1:
-      content = <Experience goNextSection={() => handleListItemClick(2)} />;
+      content = (
+        <Experience
+          hideAnimation={hideChildAnimation}
+          goNextSection={() => handleListItemClick(2)}
+        />
+      );
       break;
     case 2:
-      content = <Education goNextSection={() => handleListItemClick(3)} />;
+      content = (
+        <Education
+          hideAnimation={hideChildAnimation}
+          goNextSection={() => handleListItemClick(3)}
+        />
+      );
       break;
     case 3:
-      content = <Project goNextSection={() => handleListItemClick(4)} />;
+      content = (
+        <Project
+          hideAnimation={hideChildAnimation}
+          goNextSection={() => handleListItemClick(4)}
+        />
+      );
       break;
     case 4:
-      content = <Skills goNextSection={() => handleListItemClick(0)} />;
+      content = (
+        <Skills
+          hideAnimation={hideChildAnimation}
+          goNextSection={() => handleListItemClick(0)}
+        />
+      );
       break;
     default:
       content = null;

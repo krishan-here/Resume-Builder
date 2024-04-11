@@ -6,7 +6,13 @@ import {
 } from './constant';
 
 export const resumeContext = createContext({
-  personalInfo: { name: '', jobTitle: '', image: '', contact: '', email: '' },
+  personalInfo: {
+    name: '',
+    jobTitle: '',
+    image: '',
+    contact: '',
+    email: '',
+  },
   updatePersonalInfo: (key, value) => {},
 
   education: [],
@@ -77,7 +83,12 @@ function ResumeContextProvider({ children }) {
       id: 'edu_' + Math.floor(Math.random() * 100),
       ...INITIAL_EDUCATION_DATA,
     };
-    setEducation((educations) => [...educations, newEducation]);
+    setEducation((educations) => [
+      ...educations.map((education) => {
+        return { ...education };
+      }),
+      newEducation,
+    ]);
   }
 
   function addExperience() {
@@ -85,7 +96,12 @@ function ResumeContextProvider({ children }) {
       id: 'exp_' + Math.floor(Math.random() * 100),
       ...INITIAL_EXPERIENCE_DATA,
     };
-    setExperience((experiences) => [...experiences, newExp]);
+    setExperience((experiences) => [
+      ...experiences.map((experience) => {
+        return { ...experience };
+      }),
+      newExp,
+    ]);
   }
 
   function addProject() {
@@ -93,7 +109,12 @@ function ResumeContextProvider({ children }) {
       id: 'proj_' + Math.floor(Math.random() * 100),
       ...INITIAL_PROJECT_DATA,
     };
-    setProjects((projects) => [...projects, newProject]);
+    setProjects((projects) => [
+      ...projects.map((project) => {
+        return { ...project };
+      }),
+      newProject,
+    ]);
   }
 
   function addSkill() {
@@ -101,12 +122,21 @@ function ResumeContextProvider({ children }) {
       id: 'skill_' + Math.floor(Math.random() * 100),
       skill: '',
     };
-    setSkills((projects) => [...projects, newSkill]);
+    setSkills((skills) => [
+      ...skills.map((skill) => {
+        return { ...skill };
+      }),
+      newSkill,
+    ]);
   }
 
   function updateEducation(id, key, value) {
     setEducation((educations) => {
-      const updatedEducation = [...educations];
+      const updatedEducation = [
+        ...educations.map((education) => {
+          return { ...education };
+        }),
+      ];
       const index = updatedEducation.findIndex((item) => item.id === id);
       updatedEducation[index][key] = value;
       return updatedEducation;
@@ -115,7 +145,11 @@ function ResumeContextProvider({ children }) {
 
   function updateExperience(id, key, value) {
     setExperience((experiences) => {
-      const updatedExp = [...experiences];
+      const updatedExp = [
+        ...experiences.map((experience) => {
+          return { ...experience };
+        }),
+      ];
       const index = updatedExp.findIndex((item) => item.id === id);
       updatedExp[index][key] = value;
       return updatedExp;
@@ -124,7 +158,11 @@ function ResumeContextProvider({ children }) {
 
   function updateProject(id, key, value) {
     setProjects((projects) => {
-      const updatedProject = [...projects];
+      const updatedProject = [
+        ...projects.map((project) => {
+          return { ...project };
+        }),
+      ];
       const index = updatedProject.findIndex((item) => item.id === id);
       updatedProject[index][key] = value;
       return updatedProject;
@@ -133,7 +171,11 @@ function ResumeContextProvider({ children }) {
 
   function updateSkill(id, value) {
     setSkills((skills) => {
-      const updatedSkills = [...skills];
+      const updatedSkills = [
+        ...skills.map((skill) => {
+          return { ...skill };
+        }),
+      ];
       const index = updatedSkills.findIndex((item) => item.id === id);
       updatedSkills[index].skill = value;
       return updatedSkills;

@@ -1,5 +1,5 @@
 .page {
-    padding: 10px 20px;
+    padding: 30px 40px;
 }
 
 .page p,
@@ -8,38 +8,64 @@ h2,
 h3,
 ul {
     margin: 0;
+    font-weight: normal;
 }
 
 .main_head {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 35px;
 }
 
 .main_head h1 {
     color: #7d57c2;
+    font-size: 25px;
+    padding: 5px 0px;
 }
 
 .contact_section {
     display: flex;
     justify-content: center;
     gap: 20px;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
 }
 
 .section {
     margin-bottom: 20px;
 }
 
+.duration {
+    font-size: 12px;
+    font-family: Helvetica, sans-serif;
+    font-style: oblique;
+    flex: 1;
+}
+
 .list_item {
     margin-bottom: 5px;
 }
 
+.list_item_header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list_item_header img {
+    width: 12px;
+}
+
 .list_item h3 {
-    font-size: 15px;
+    font-size: 16px;
     margin-bottom: 5px;
+    font-family: 'Rubik';
+    flex: 3;
 }
 
 .list_item p {
-    font-size: 13px;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #384347;
+    line-height: 1.5;
 }
 
 .header {
@@ -47,18 +73,39 @@ ul {
 }
 
 .header h2 {
-    font-size: large;
+    font-size: 20px;
     color: #7d57c2;
+    font-family: 'Rubik';
+}
+
+.edu_detail {
+    display: flex;
+}
+
+.edu_description {
+    flex: 3
+}
+
+.edu_grade {
+    flex: 1;
+    font-size: 12px;
+    font-family: Helvetica, sans-serif;
+    font-style: oblique;
 }
 
 .skill_list {
     display: flex;
     gap: 10px;
+    margin-bottom: 30px;
 }
 
 .skill_list li {
     font-size: 14px;
     border: 2px solid #7d57c2;
     border-radius: 10px;
-    padding: 3px 10px;
+    padding: 5px 10px;
+    font-family: 'Rubik';
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }

@@ -4,7 +4,7 @@ import { useContext, useState } from 'react';
 import { resumeContext } from '../context/resume';
 import Input from './UI/Input';
 
-function Project({ goNextSection }) {
+function Project({ hideAnimation, goNextSection }) {
   const [selectedItemIdx, setSelectedItemIdx] = useState(0);
 
   const resumeCtx = useContext(resumeContext);
@@ -16,6 +16,7 @@ function Project({ goNextSection }) {
 
   function handleAddMoreClick(e) {
     e.preventDefault();
+    if (currentProject.name === '') return;
     e.target.reset();
     resumeCtx.addProject();
     setSelectedItemIdx(resumeCtx.projects.length);
@@ -38,9 +39,8 @@ function Project({ goNextSection }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={!hideAnimation && { opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.1 }}
       className='edu-section'>
       <ul className='list-container'>
         {resumeCtx.projects.map((item, index) => {
@@ -59,6 +59,7 @@ function Project({ goNextSection }) {
       <form onSubmit={handleAddMoreClick}>
         <Input
           label='Name'
+          required
           id='name'
           name='name'
           onChange={(e) => handleInputChange('name', e.target.value)}
@@ -76,7 +77,7 @@ function Project({ goNextSection }) {
           <Input
             label='Duration(From)'
             id='duration'
-            type='date'
+            type='month'
             onChange={(e) => handleInputChange('from', e.target.value)}
             value={currentProject.from}
             name='from'
@@ -86,7 +87,7 @@ function Project({ goNextSection }) {
             id='duration'
             onChange={(e) => handleInputChange('to', e.target.value)}
             value={currentProject.to}
-            type='date'
+            type='month'
             name='to'
           />
         </div>

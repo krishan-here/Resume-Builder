@@ -4,7 +4,7 @@ import { useContext, useState } from 'react';
 import { resumeContext } from '../context/resume';
 import Input from './UI/Input';
 
-function Experience({ goNextSection }) {
+function Experience({ hideAnimation, goNextSection }) {
   const [selectedItemIdx, setSelectedItemIdx] = useState(0);
 
   const resumeCtx = useContext(resumeContext);
@@ -16,6 +16,7 @@ function Experience({ goNextSection }) {
 
   function handleAddMoreClick(e) {
     e.preventDefault();
+    if (currentExp.role === '') return;
     e.target.reset();
     resumeCtx.addExperience();
     setSelectedItemIdx(resumeCtx.experience.length);
@@ -38,9 +39,8 @@ function Experience({ goNextSection }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={!hideAnimation && { opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.1 }}
       className='edu-section'>
       <ul className='list-container'>
         {resumeCtx.experience.map((item, index) => {
@@ -58,18 +58,19 @@ function Experience({ goNextSection }) {
       </ul>
       <form onSubmit={handleAddMoreClick}>
         <Input
+          label='Role'
+          id='role'
+          required
+          name='role'
+          onChange={(e) => handleInputChange('role', e.target.value)}
+          value={currentExp.role}
+        />
+        <Input
           label='Company'
           id='company'
           name='company'
           onChange={(e) => handleInputChange('company', e.target.value)}
           value={currentExp.company}
-        />
-        <Input
-          label='Role'
-          id='role'
-          name='role'
-          onChange={(e) => handleInputChange('role', e.target.value)}
-          value={currentExp.role}
         />
         <Input
           label='Description'
@@ -83,7 +84,7 @@ function Experience({ goNextSection }) {
           <Input
             label='Duration(From)'
             id='duration'
-            type='date'
+            type='month'
             onChange={(e) => handleInputChange('from', e.target.value)}
             value={currentExp.from}
             name='from'
@@ -93,7 +94,7 @@ function Experience({ goNextSection }) {
             id='duration'
             onChange={(e) => handleInputChange('to', e.target.value)}
             value={currentExp.to}
-            type='date'
+            type='month'
             name='to'
           />
         </div>

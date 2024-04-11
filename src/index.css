@@ -6,6 +6,10 @@ body {
   background: #f8f8f8;
 }
 
+:root {
+  --danger: rgb(241, 121, 77);
+}
+
 ul {
   list-style: none;
   padding: 0px;
@@ -13,9 +17,9 @@ ul {
 
 textarea {
   resize: vertical;
+  font-family: "Poppins", sans-serif !important;
+  font-size: smaller !important;
 }
-
-
 
 .poppins-light {
   font-family: "Poppins", sans-serif;
@@ -25,6 +29,13 @@ textarea {
 
 .poppins-regular {
   font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rubik {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
 }
@@ -54,6 +65,10 @@ textarea {
   border-radius: 50%;
 }
 
+.danger-text {
+  color: var(--danger);
+}
+
 .btn {
   border: none;
   width: 100%;
@@ -76,10 +91,15 @@ textarea {
   outline: 1px solid #4f4f4f;
 }
 
+.btn-text {
+  color: #000000;
+  text-decoration: none;
+}
+
 .btn-icon {
   width: fit-content;
-  outline-color: rgb(241, 121, 77);
-  color: rgb(241, 121, 77);
+  outline-color: var(--danger);
+  color: var(--danger);
 }
 
 .input-grp {
@@ -172,6 +192,32 @@ textarea {
 .resume-preview {
   margin: 0 auto;
   background: #fff;
-  width: 600px;
-  height: 849.87px;
+  width: 700px;
+  height: 800px;
+}
+
+/* navbar  */
+
+.navbar-wrapper {
+  padding: 15px 100px 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 2px solid #e8e8e8;
+
+}
+
+.nav_brand img {
+  width: 80px;
+  object-fit: contain;
+}
+
+.navbar-wrapper .btn-grp {
+  margin: 0;
+  gap: 15px;
+}
+
+.navbar-wrapper .btn {
+  padding: 8px 20px;
 }

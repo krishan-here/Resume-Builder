@@ -4,7 +4,7 @@ import { useContext, useState } from 'react';
 import { resumeContext } from '../context/resume';
 import Input from './UI/Input';
 
-function Skills({ goNextSection }) {
+function Skills({ hideAnimation, goNextSection }) {
   const [selectedItemIdx, setSelectedItemIdx] = useState(0);
 
   const resumeCtx = useContext(resumeContext);
@@ -39,9 +39,8 @@ function Skills({ goNextSection }) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 10 }}
+      initial={!hideAnimation && { opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.1 }}
       className='edu-section'>
       <ul className='list-container skills'>
         {resumeCtx.skills.map((item, index) => {
@@ -60,6 +59,7 @@ function Skills({ goNextSection }) {
       <form onSubmit={handleAddMoreClick}>
         <Input
           label='Skill'
+          required
           id='skill'
           skill='skill'
           onChange={(e) => handleInputChange(e.target.value)}

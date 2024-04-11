@@ -1,7 +1,10 @@
-function Input({ label, id, textarea, ...rest }) {
+function Input({ label, id, textarea, required, ...rest }) {
   return (
     <div className='input-control'>
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id}>
+        {required && <span className='danger-text'>*</span>}
+        {label}
+      </label>
       {textarea && (
         <textarea
           id={id}
