@@ -13,12 +13,12 @@ import { dateFormatter } from '../../../utils/format';
 
 Font.register({
   family: 'Rubik',
-  src: 'http://fonts.gstatic.com/s/rubik/v4/2AfMVb-218AAzRWsLqegwg.ttf',
+  src: 'https://fonts.gstatic.com/s/rubik/v4/2AfMVb-218AAzRWsLqegwg.ttf',
 });
 
 Font.register({
   family: 'Poppins',
-  src: 'http://fonts.gstatic.com/s/poppins/v1/TDTjCH39JjVycIF24TlO-Q.ttf',
+  src: 'https://fonts.gstatic.com/s/poppins/v1/TDTjCH39JjVycIF24TlO-Q.ttf',
 });
 
 const hyphenationCallback = (word) => {
