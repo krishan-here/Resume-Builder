@@ -81,13 +81,13 @@ function PersonalInfo({ hideAnimation, goNextSection }) {
           value={personalInfo.name}
           onChange={(e) => handleInputChange('name', e.target.value)}
         />
-        <Input
+        {/* <Input
           label='Job Title'
           id='title'
           name='title'
           value={personalInfo.title}
           onChange={(e) => handleInputChange('title', e.target.value)}
-        />
+        /> */}
         <Input
           label='Email'
           id='email'
