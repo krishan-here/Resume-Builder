@@ -11,7 +11,10 @@ function WordDisplay() {
   return (
     <div className={s.page}>
       <div className={`${s.main_head} ${personalInfo.image ? s.center : ''}`}>
-        <div className={s.main_detail}>
+        <div
+          className={`${s.main_detail} ${
+            personalInfo.image ? s.align_left : ''
+          }`}>
           <h1>{personalInfo.name}</h1>
           <div className={s.contact_section}>
             <p>{personalInfo.email}</p>
