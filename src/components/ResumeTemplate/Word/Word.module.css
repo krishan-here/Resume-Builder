@@ -28,6 +28,16 @@ ul {
     padding: 5px 0px;
 }
 
+.main_detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.align_left {
+    align-items: self-start;
+}
+
 .main_img img {
     width: 80px;
     height: 80px;
