@@ -32,7 +32,7 @@ function Navbar() {
             Download
           </PDFDownloadLink>
         </button>
-        <button className='btn btn-dark'>Share</button>
+        {/* <button className='btn btn-dark'>Share</button> */}
       </div>
     </nav>
   );
