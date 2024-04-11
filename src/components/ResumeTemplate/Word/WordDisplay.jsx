@@ -10,12 +10,22 @@ function WordDisplay() {
 
   return (
     <div className={s.page}>
-      <div className={s.main_head}>
-        <h1>{personalInfo.name}</h1>
-        <div className={s.contact_section}>
-          <p>{personalInfo.email}</p>
-          <p>{personalInfo.contact}</p>
+      <div className={`${s.main_head} ${personalInfo.image ? s.center : ''}`}>
+        <div className={s.main_detail}>
+          <h1>{personalInfo.name}</h1>
+          <div className={s.contact_section}>
+            <p>{personalInfo.email}</p>
+            <p>{personalInfo.contact}</p>
+          </div>
         </div>
+        {personalInfo.image && (
+          <div className={s.main_img}>
+            <img
+              src={personalInfo.image}
+              alt='profile'
+            />
+          </div>
+        )}
       </div>
 
       {experience.length && experience[0].role && (

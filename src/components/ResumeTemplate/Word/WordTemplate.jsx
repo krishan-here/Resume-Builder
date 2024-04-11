@@ -38,6 +38,18 @@ const s = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 35,
     fontWeight: 'ultrabold',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  main_img: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    objectFit: 'cover',
+  },
+  main_detail: {
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   main_head_h1: {
     fontSize: 25,
@@ -45,7 +57,6 @@ const s = StyleSheet.create({
     paddingVertical: 5,
   },
   contact_section: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     fontFamily: 'Poppins',
@@ -66,6 +77,7 @@ const s = StyleSheet.create({
     flexGrow: 1,
     flexBasis: '0%',
     flexShrink: 1,
+    textAlign: 'right',
   },
   edu_detail: {
     flexDirection: 'column',
@@ -101,10 +113,10 @@ const s = StyleSheet.create({
     flexShrink: 1,
   },
   skill_list: {
-    flex: 1,
     flexDirection: 'row',
     gap: 10,
-    marginBottom: 30,
+    // marginBottom: 30,
+    flexWrap: 'wrap',
   },
   skill_list_item: {
     fontSize: 14,
@@ -114,7 +126,7 @@ const s = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 10,
     paddingVertical: 3,
-    height: 30,
+    // height: 30,
     fontFamily: 'Rubik',
     alignItems: 'center',
     justifyContent: 'center',
@@ -135,12 +147,30 @@ function WordTemplate({
         size='A4'
         style={s.page}
         id='resume'>
-        <View style={s.main_head}>
-          <Text style={s.main_head_h1}>{info.name}</Text>
-          <View style={s.contact_section}>
-            <Text>{info.email}</Text>
-            <Text>{info.contact}</Text>
+        <View
+          style={{
+            ...s.main_head,
+            justifyContent: info.image ? 'space-between' : 'center',
+          }}>
+          <View
+            style={{
+              ...s.main_detail,
+              alignItems: info.image ? 'flex-start' : 'center',
+            }}>
+            <Text style={s.main_head_h1}>{info.name}</Text>
+            <View style={s.contact_section}>
+              <Text>{info.email}</Text>
+              <Text>{info.contact}</Text>
+            </View>
           </View>
+          {info.image && (
+            <View>
+              <Image
+                style={s.main_img}
+                src={info.image}
+              />
+            </View>
+          )}
         </View>
 
         {experience.length > 0 && experience[0].role !== '' && (
@@ -282,7 +312,12 @@ function WordTemplate({
                       )}
                     </View>
                     {edu.grade && (
-                      <Text style={{ ...s.duration, marginBottom: 20 }}>
+                      <Text
+                        style={{
+                          ...s.duration,
+                          textAlign: 'left',
+                          marginBottom: 20,
+                        }}>
                         {edu.grade}
                       </Text>
                     )}

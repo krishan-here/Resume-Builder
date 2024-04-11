@@ -150,6 +150,10 @@ textarea {
   margin-top: 20px;
 }
 
+.btn-grp.image {
+  gap: 10px;
+}
+
 .btn-dark {
   background: #000000;
   color: #fff;
@@ -192,8 +196,8 @@ textarea {
 .resume-preview {
   margin: 0 auto;
   background: #fff;
-  width: 700px;
-  height: 800px;
+  width: 607px;
+  height: 820px;
 }
 
 /* navbar  */

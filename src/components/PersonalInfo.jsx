@@ -1,3 +1,4 @@
+import DeleteIcon from '@mui/icons-material/Delete';
 import { motion } from 'framer-motion';
 import { useContext, useEffect, useRef, useState } from 'react';
 import dummyProfile from '../assets/dummy_profile.png';
@@ -13,6 +14,11 @@ function PersonalInfo({ hideAnimation, goNextSection }) {
   useEffect(() => {
     setImageURL(resumeCtx.personalInfo.image);
   }, [resumeCtx.personalInfo.image]);
+
+  function handleDeleteImage() {
+    handleInputChange('image', '');
+    setImageURL('');
+  }
 
   function handleFileChange(e) {
     const file = e.target.files[0];
@@ -50,11 +56,21 @@ function PersonalInfo({ hideAnimation, goNextSection }) {
           ref={fileInputRef}
           onChange={handleFileChange}
         />
-        <button
-          className='btn btn-outline'
-          onClick={handleBrowsePhoto}>
-          Browse Photo
-        </button>
+        <div className='btn-grp image'>
+          <button
+            className='btn btn-outline'
+            onClick={handleBrowsePhoto}>
+            Browse Photo
+          </button>
+          {personalInfo.image && (
+            <button
+              type='button'
+              onClick={handleDeleteImage}
+              className='btn btn-outline btn-icon'>
+              <DeleteIcon />
+            </button>
+          )}
+        </div>
       </div>
 
       <form>
