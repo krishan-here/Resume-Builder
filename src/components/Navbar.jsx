@@ -7,6 +7,13 @@ import WordTemplate from './ResumeTemplate/Word/WordTemplate';
 function Navbar() {
   const resumeCtx = useContext(resumeContext);
 
+  function handleLinkedInClick() {
+    const your_callback_url = 'https://resume-builder-72afc.web.app/';
+    const your_client_id = '86632cjufnv0bs';
+    const url = `https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${your_client_id}&redirect_uri=${your_callback_url}&state=foobar&scope=liteprofile%20emailaddress%20w_member_social`;
+    window.open(url, '_blank');
+  }
+
   return (
     <nav className='navbar-wrapper'>
       <div className='nav_brand'>
@@ -32,7 +39,11 @@ function Navbar() {
             Download
           </PDFDownloadLink>
         </button>
-        {/* <button className='btn btn-dark'>Share</button> */}
+        <button
+          className='btn btn-dark'
+          onClick={handleLinkedInClick}>
+          Get LinkedIn Data
+        </button>
       </div>
     </nav>
   );
