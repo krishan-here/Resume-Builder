@@ -80,6 +80,16 @@ function Experience({ hideAnimation, goNextSection }) {
           value={currentExp.description}
           textarea
         />
+        <Input
+          label='Enhance Description'
+          id='description'
+          aiInput
+          show={true}
+          name='description'
+          onChange={(e) => handleInputChange('description', e.target.value)}
+          value={currentExp.description}
+          textarea
+        />
         <div className='input-grp'>
           <Input
             label='Duration(From)'

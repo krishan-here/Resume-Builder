@@ -138,6 +138,27 @@ textarea {
   outline: none;
 }
 
+.label-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: small;
+  margin-right: 10px;
+}
+
+.toggle .select {
+  color: #2cc08d;
+}
+
+.toggle .remove {
+  color: #c5c2c2;
+}
+
 /* education section  */
 
 .edu-section {
@@ -157,7 +178,18 @@ textarea {
 .btn-dark {
   background: #000000;
   color: #fff;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+
+.icon-color path {
+  /* Apply linear gradient to SVG fill color */
+  fill: url(#gradient);
+  /* Reference the gradient definition */
+}
+
 
 .list-container {
   display: flex;
@@ -224,4 +256,20 @@ textarea {
 
 .navbar-wrapper .btn {
   padding: 8px 20px;
+}
+
+.ai-label {
+  width: fit-content;
+  background-image: linear-gradient(90deg, #da7430, #af6dac, #1e90e7);
+  background-clip: text;
+  -webkit-background-clip: text;
+  /* For older WebKit browsers */
+  color: transparent;
+}
+
+.ai-input {
+  /* border: 5px solid !important; */
+  border-image: linear-gradient(90deg, #da7430, #af6dac, #1e90e7) !important;
+  border-image-slice: 1 !important;
+  border-radius: 4px !important;
 }
